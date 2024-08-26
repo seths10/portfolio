@@ -1,113 +1,168 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useSpring } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
+import { CodeIcon } from "lucide-react";
+import HeaderDockItem from "@/components/ui/header-dock-item";
+import Link from "next/link";
+import { siteConfig } from "@/config/site";
+import { ModeToggle } from "@/components/ui/mode-toogle";
+import { Icons } from "@/components/icons/icons";
+import TypingText from "@/components/ui/typing-text";
 
 export default function Home() {
+  const { resolvedTheme } = useTheme();
+  const headerRef = useRef<HTMLDivElement>(null);
+  const top = useSpring(8, { damping: 15 });
+  const width = useSpring(40, { damping: 15 });
+  const height = useSpring(10, { damping: 15 });
+  const isInView = useInView(headerRef);
+  const [animationEnded, setAnimationEnded] = useState(false);
+  const pathname = usePathname();
+  const isIndexPage = pathname === "/";
+  const border = 2;
+
+  useEffect(() => {
+    if (!isInView) {
+      return;
+    }
+
+    function setSize() {
+      const offset = 40;
+      top.set(
+        window.innerHeight - (headerRef.current?.clientHeight ?? 0) - offset
+      );
+      width.set(headerRef.current?.clientWidth ?? 0);
+      height.set(border + (headerRef.current?.clientHeight ?? 0));
+    }
+
+    const timeout = setTimeout(setSize, 500);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [top, isInView, width, height]);
+
+  const Header = !animationEnded ? motion.header : "header";
+  const styles = !animationEnded
+    ? {
+        top,
+        width,
+        height,
+        transform: "translateX(-50%)",
+      }
+    : {
+        // Once the animation ends, use CSS to properly position the header
+        top: "calc(100dvh - 96px)",
+        width: "fit-content",
+        height: "fit-content",
+        transform: "translateX(-50%)",
+      };
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="flex items-center h-screen justify-center">
+      <div className="p-2.5 absolute  top-0 left-50">
+        <p className="text-zinc-700 font-semibold text-xl tracking-wide">eth.</p>
+      </div>
+      <div className="flex flex-col rounded-xl border border-border bg-gray-100 dark:border-zinc-600 dark:bg-zinc-700 lg:col-span-2">
+        {/** Window */}
+        <div className="flex gap-1.5 border-b border-border p-4 dark:border-zinc-600">
+          <span className="h-3 w-3 transform rounded-full bg-red-500 transition-transform duration-150 hover:scale-110" />
+          <span className="h-3 w-3 transform rounded-full bg-yellow-500 transition-transform duration-150 hover:scale-110" />
+          <span className="h-3 w-3 transform rounded-full bg-green-500 transition-transform duration-150 hover:scale-110" />
+        </div>
+        {/** Code */}
+        <div className="group w-full p-4 font-mono text-sm">
+          <div className="mt-2 line-clamp-1">
+            <span className="font-medium text-yellow-600 dark:text-yellow-500">
+              import
+            </span>{" "}
+            <span className="transition-all group-hover:animate-pulse group-hover:text-blue-600 dark:group-hover:text-blue-400">
+              {" { Portfolio } "}
+            </span>{" "}
+            <span className="font-medium text-yellow-600 dark:text-yellow-500">
+              from
+            </span>{" "}
+            &quot;@/thin-air 😆&quot;
+          </div>
+
+          <TypingText
+            repeat={false}
+            className="my-2 w-full"
+            text="$ site under construction..."
+          />
         </div>
       </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+      <Header
+        // @ts-expect-error - the conditional type is not being inferred correctly
+        style={styles}
+        onAnimationEnd={() => {
+          function clear() {
+            if (
+              String(height.get()) ===
+              String(border + (headerRef.current?.clientHeight ?? 0))
+            ) {
+              setAnimationEnded(true);
+            } else {
+              requestAnimationFrame(clear);
+            }
+          }
+
+          if (!animationEnded && width.get() > 40 && isInView) {
+            requestAnimationFrame(clear);
+          }
+        }}
+        className={cn(
+          "fixed left-1/2 z-50 mx-auto rounded-2xl border border-muted-foreground bg-zinc-700 text-background shadow-sm shadow-muted-foreground dark:bg-white",
+          {
+            "transition-all duration-300": animationEnded,
+            "overflow-hidden": !animationEnded,
+          }
+        )}
+      >
+        <div
+          ref={headerRef}
+          className="flex h-14 w-fit max-w-fit items-center px-2"
+        >
+          <div className="flex flex-1 items-center justify-between space-x-2">
+            <nav className="flex items-center gap-2">
+              <Link href={siteConfig.links.blog} rel="noreferrer">
+                <HeaderDockItem>
+                  <CodeIcon className="h-4 w-4" />
+                  <span className="sr-only">Components</span>
+                </HeaderDockItem>
+              </Link>
+              <Link
+                href={siteConfig.links.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <HeaderDockItem>
+                  <Icons.gitHub className="h-4 w-4" />
+                  <span className="sr-only">GitHub</span>
+                </HeaderDockItem>
+              </Link>
+              <Link
+                href={siteConfig.links.twitter}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <HeaderDockItem>
+                  <Icons.twitter className="h-3 w-3 fill-current" />
+                  <span className="sr-only">Twitter</span>
+                </HeaderDockItem>
+              </Link>
+              <ModeToggle />
+            </nav>
+          </div>
+        </div>
+        <motion.div
+          className="pointer-events-none absolute inset-0 h-full w-full animate-pulse rounded-2xl bg-foreground duration-mid repeat-1"
+          style={{ opacity: animationEnded ? 0 : 0.3 }}
         />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </Header>
     </main>
   );
 }
