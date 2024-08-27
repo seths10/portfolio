@@ -37,22 +37,22 @@ function BottomNav() {
       ref={scope}
       initial={{ opacity: 0 }}
       className={cn(
-        "fixed left-1/2 bottom-8 z-50 mx-auto rounded-2xl bg-zinc-700 text-background dark:bg-white",
+        "fixed left-1/2 bottom-4 sm:bottom-8 z-50 mx-auto rounded-2xl bg-zinc-700 text-background dark:bg-white",
         "transform -translate-x-1/2"
       )}
       style={{
         opacity: isVisible ? 1 : 0,
       }}
     >
-      <div className="flex h-14 w-fit max-w-fit items-center px-2">
-        <div className="flex flex-1 items-center justify-between space-x-2">
-          <nav className="flex items-center gap-2">
+      <div className="flex h-12 sm:h-14 w-fit max-w-fit items-center px-1 sm:px-2">
+        <div className="flex flex-1 items-center justify-between space-x-1 sm:space-x-2">
+          <nav className="flex items-center gap-1 sm:gap-2">
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link href="/projects" rel="noreferrer">
                     <HeaderDockItem>
-                      <FolderIcon className="h-4 w-4" />
+                      <FolderIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                       <span className="sr-only">Projects</span>
                     </HeaderDockItem>
                   </Link>
@@ -70,8 +70,8 @@ function BottomNav() {
                     rel="noreferrer"
                   >
                     <HeaderDockItem>
-                      <NotebookPen className="h-4 w-4" />
-                      <span className="sr-only">Components</span>
+                      <NotebookPen className="h-3 w-3 sm:h-4 sm:w-4" />
+                      <span className="sr-only">Blog</span>
                     </HeaderDockItem>
                   </Link>
                 </TooltipTrigger>
@@ -88,7 +88,7 @@ function BottomNav() {
                     rel="noreferrer"
                   >
                     <HeaderDockItem>
-                      <Icons.gitHub className="h-4 w-4" />
+                      <Icons.gitHub className="h-3 w-3 sm:h-4 sm:w-4" />
                       <span className="sr-only">GitHub</span>
                     </HeaderDockItem>
                   </Link>
@@ -102,7 +102,7 @@ function BottomNav() {
                 <TooltipTrigger asChild>
                   <Link href="/experience" rel="noreferrer">
                     <HeaderDockItem>
-                      <BriefcaseBusinessIcon className="h-4 w-4" />
+                      <BriefcaseBusinessIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                       <span className="sr-only">Experience</span>
                     </HeaderDockItem>
                   </Link>
@@ -120,7 +120,7 @@ function BottomNav() {
                     rel="noreferrer"
                   >
                     <HeaderDockItem>
-                      <Icons.twitter className="h-3 w-3 fill-current" />
+                      <Icons.twitter className="h-2.5 w-2.5 sm:h-3 sm:w-3 fill-current" />
                       <span className="sr-only">Twitter</span>
                     </HeaderDockItem>
                   </Link>
@@ -130,13 +130,13 @@ function BottomNav() {
                 </TooltipContent>
               </Tooltip>
 
-              <div className="w-px h-8 bg-zinc-600 dark:bg-zinc-300 mx-2" />
+              <div className="w-px h-6 sm:h-8 bg-zinc-600 dark:bg-zinc-300 mx-1 sm:mx-2" />
 
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link href="/memo" rel="noreferrer">
                     <HeaderDockItem>
-                      <ImageIcon className="h-4 w-4" />
+                      <ImageIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                       <span className="sr-only">Memo</span>
                     </HeaderDockItem>
                   </Link>

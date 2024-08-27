@@ -13,7 +13,7 @@ export default function ProjectsPage() {
         <ArrowLeft className="mr-2 h-4.5 w-5" /> Back to Home
       </Link>
       <h1 className="text-2xl font-semibold mb-8 text-center">Projects I&apos;ve worked on</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}

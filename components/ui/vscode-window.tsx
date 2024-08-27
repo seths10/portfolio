@@ -5,7 +5,6 @@ import { LinkPreview } from "@/components/ui/link-preview";
 import { motion } from "framer-motion";
 import TypingText from "@/components/ui/typing-text";
 import Image from "next/image";
-import Link from "next/link";
 
 function VSCodeWindow() {
   const [typingDone, setTypingDone] = React.useState(false);
