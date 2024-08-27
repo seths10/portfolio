@@ -1,4 +1,6 @@
-export const projects = [
+import { Project, Experience } from "@/types/index";
+
+export const projects: Project[] = [
   {
     id: 1,
     title: "Quotes Generator",
@@ -22,5 +24,65 @@ export const projects = [
     imageUrl: "/images/projects/portfolio.png",
     githubUrl: "https://github.com/seths10/portfolio",
     liveUrl: "https://ethr.vercel.app",
+  },
+];
+
+export const experiences: Experience[] = [
+  {
+    id: 1,
+    companyOrOrganization: "Amalitech",
+    companyLogo: "/images/companies/amalitech.png",
+    position: "Software Engineer",
+    role: "Frontend",
+    present: true,
+    joinDate: "Nov, 2023",
+    exitDate: "Present",
+  },
+  {
+    id: 2,
+    companyOrOrganization: "OPIN Technologies",
+    position: "Software Engineer",
+    role: "Frontend",
+    present: false,
+    joinDate: "Dec, 2022",
+    exitDate: "Jan, 2024",
+  },
+  {
+    id: 3,
+    companyOrOrganization: "Turntabl",
+    position: "Intern",
+    companyLogo: "/images/companies/turntabl.jfif",
+    present: false,
+    joinDate: "Jun, 2022",
+    exitDate: "Aug, 2022",
+  },
+  {
+    id: 4,
+    companyOrOrganization: "Kraado",
+    position: "Contract Software Engineer",
+    companyLogo: "/images/companies/kraado.jpg",
+    present: false,
+    joinDate: "Dec, 2022",
+    exitDate: "Feb, 2023",
+  },
+  {
+    id: 5,
+    companyOrOrganization: "Microsoft Learn Student Ambassador",
+    position: "Student",
+    role: "Campus Ambassador",
+    companyLogo: "/images/companies/mlsa.png",
+    present: false,
+    joinDate: "Jul, 2022",
+    exitDate: "Jul, 2024",
+  },
+  {
+    id: 6,
+    companyOrOrganization: "Google Student Club",
+    position: "Student",
+    role: "Lead",
+    companyLogo: "/images/companies/gdsc.jfif",
+    present: false,
+    joinDate: "Aug, 2021",
+    exitDate: "Jul, 2022",
   },
 ];
