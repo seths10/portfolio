@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { CodeIcon } from "lucide-react";
+import { CodeIcon, FolderIcon } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { ModeToggle } from "@/components/ui/mode-toogle";
 import { Icons } from "@/components/icons/icons";
@@ -87,6 +87,12 @@ function BottomNav() {
       >
         <div className="flex flex-1 items-center justify-between space-x-2">
           <nav className="flex items-center gap-2">
+            <Link href="/projects" rel="noreferrer">
+              <HeaderDockItem>
+                <FolderIcon className="h-4 w-4" />
+                <span className="sr-only">Projects</span>
+              </HeaderDockItem>
+            </Link>
             <Link href={siteConfig.links.blog} rel="noreferrer">
               <HeaderDockItem>
                 <CodeIcon className="h-4 w-4" />

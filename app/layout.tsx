@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Providers } from "@/app/providers";
 import localFont from "next/font/local";
 import "./globals.css";
+// import { motion } from "framer-motion";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eth.vercel.app/"),
@@ -24,6 +25,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html
       lang="en"
@@ -31,7 +33,17 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="antialiased">
-        <Providers>{children}</Providers>
+        <Providers>
+          {/* <motion.div
+            // key={router.pathname}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          > */}
+            {children}{" "}
+          {/* </motion.div> */}
+        </Providers>
       </body>
     </html>
   );
