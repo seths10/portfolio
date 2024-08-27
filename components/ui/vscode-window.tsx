@@ -23,7 +23,7 @@ function VSCodeWindow() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col rounded-xl border border-border bg-gray-100 dark:border-zinc-600 dark:bg-zinc-800/30 dark:backdrop-blur-md lg:col-span-2 w-full max-w-4xl"
+      className="flex flex-col rounded-xl border border-border bg-gray-100 dark:border-zinc-600 dark:bg-zinc-800/30 dark:backdrop-blur-md lg:col-span-2 w-full max-w-4xl relative overflow-hidden"
     >
       <div className="flex items-center justify-between border-b border-border p-2 dark:border-zinc-600">
         <div className="flex items-center space-x-2">
@@ -108,6 +108,7 @@ function VSCodeWindow() {
           </div>
         </div>
       </div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-100 via-gray-100/70 to-transparent dark:from-zinc-800 dark:via-zinc-800/70 dark:to-transparent pointer-events-none"></div>
     </motion.div>
   );
 }
