@@ -1,11 +1,12 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { ExternalLinkIcon } from "lucide-react";
+import { Separator } from "@/components/ui/separator"
+import { Project } from "@/types/index";
 import { motion } from "framer-motion";
 import { Icons } from "../icons/icons";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Project } from "@/types/index";
 
 export function ProjectCard({
   project,
@@ -35,12 +36,13 @@ export function ProjectCard({
           backgroundSize: "cover",
         }}
       >
-        <div className="flex items-center justify-center gap-3 absolute w-full h-full top-0 left-0 transition duration-300 opacity-0 group-hover/inner:opacity-90 bg-black">
+        <div className="flex items-center justify-center gap-4 absolute w-full h-full top-0 left-0 transition duration-300 opacity-0 group-hover/inner:opacity-90 bg-black">
           <Link href={project.githubUrl} target="_blank" className="opacity-0 group-hover/inner:opacity-100 transition-opacity duration-300">
-            <Icons.gitHub className="h-5 w-5 text-white" />
+            <Icons.gitHub className="h-6 w-6 text-white" />
           </Link>
+          <Separator orientation="vertical" className="h-3.5" />
           <Link href={project.liveUrl} target="_blank" className="opacity-0 group-hover/inner:opacity-100 transition-opacity duration-300">
-            <ExternalLinkIcon className="h-5 w-5 text-white" />
+            <ExternalLinkIcon className="h-6 w-6 text-white" />
           </Link>
         </div>
 

@@ -20,7 +20,7 @@ export const projects: Project[] = [
   {
     id: 3,
     title: "Personal Portfolio",
-    description: "My personal portfolio website",
+    description: "My personal portfolio website built with Next.js and Tailwind CSS",
     imageUrl: "/images/projects/portfolio.png",
     githubUrl: "https://github.com/seths10/portfolio",
     liveUrl: "https://ethr.vercel.app",
