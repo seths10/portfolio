@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import {
   BriefcaseBusinessIcon,
-  Building2,
   FolderIcon,
   NotebookPen,
   Image as ImageIcon,
