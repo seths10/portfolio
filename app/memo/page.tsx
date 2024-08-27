@@ -14,6 +14,12 @@ const images = [
   "/images/memo/5.jpg",
   "/images/memo/6.jpg",
   "/images/memo/7.jpeg",
+  "/images/memo/8.jpg",
+  "/images/memo/9.jpg",
+  "/images/memo/10.jpg",
+  "/images/memo/11.jpg",
+  "/images/memo/12.jpg",
+  "/images/memo/13.jpeg",
 ];
 
 export default function MemoPage() {
