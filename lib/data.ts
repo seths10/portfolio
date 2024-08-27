@@ -37,6 +37,7 @@ export const experiences: Experience[] = [
     present: true,
     joinDate: "Nov, 2023",
     exitDate: "Present",
+    location: "Accra, Ghana",
   },
   {
     id: 2,
@@ -46,6 +47,7 @@ export const experiences: Experience[] = [
     present: false,
     joinDate: "Dec, 2022",
     exitDate: "Jan, 2024",
+    location: "Remote",
   },
   {
     id: 3,
@@ -55,6 +57,7 @@ export const experiences: Experience[] = [
     present: false,
     joinDate: "Jun, 2022",
     exitDate: "Aug, 2022",
+    location: "Accra, Ghana",
   },
   {
     id: 4,
@@ -64,6 +67,7 @@ export const experiences: Experience[] = [
     present: false,
     joinDate: "Dec, 2022",
     exitDate: "Feb, 2023",
+    location: "Remote",
   },
   {
     id: 5,
@@ -74,6 +78,7 @@ export const experiences: Experience[] = [
     present: false,
     joinDate: "Jul, 2022",
     exitDate: "Jul, 2024",
+    location: "Remote",
   },
   {
     id: 6,
@@ -84,5 +89,6 @@ export const experiences: Experience[] = [
     present: false,
     joinDate: "Aug, 2021",
     exitDate: "Jul, 2022",
+    location: "Cape Coast, Ghana",
   },
 ];

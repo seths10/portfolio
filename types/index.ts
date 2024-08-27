@@ -7,6 +7,7 @@ export type Experience = {
   joinDate: string;
   exitDate?: string;
   present: boolean;
+  location?: string;
   achievements?: string[];
 };
 

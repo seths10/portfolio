@@ -6,7 +6,7 @@ import VSCodeWindow from "@/components/ui/vscode-window";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen py-10 px-4">
+    <main className="flex flex-col items-center bg-gray-100 dark:bg-zinc-900 justify-between min-h-screen py-10 px-4">
       <header className="w-full max-w-4xl">
         <TypingText
           className="text-zinc-700 text-center dark:text-white font-semibold text-xl tracking-wider"

@@ -1,5 +1,7 @@
 "use client";
 
+import { ExperienceCard } from "@/components/ui/experience-card";
+import { experiences } from "@/lib/data";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -9,8 +11,8 @@ export default function MemoPage() {
       <Link href="/" className="flex items-center text-zinc-600 dark:text-zinc-400 mb-8">
         <ArrowLeft className="mr-2 h-4.5 w-5" /> Back to Home
       </Link>
-      <h1 className="text-3xl font-semibold mb-8 text-center">Some moments I&apos;ve been a part of</h1>
-
+      <h1 className="text-2xl font-semibold mb-8 text-center">Some moments I&apos;ve been a part of</h1>
+      
     </div>
   );
 }

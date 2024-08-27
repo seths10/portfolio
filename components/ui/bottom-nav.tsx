@@ -64,7 +64,11 @@ function BottomNav() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link href={siteConfig.links.blog} rel="noreferrer">
+                  <Link
+                    href={siteConfig.links.blog}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <HeaderDockItem>
                       <NotebookPen className="h-4 w-4" />
                       <span className="sr-only">Components</span>
