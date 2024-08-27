@@ -54,6 +54,17 @@ interface TypingTextProps {
    *
    */
   waitTime?: number;
+
+  /**
+   * Callback function to be called when the typing is complete
+   */
+  onComplete?: () => void;
+
+  /**
+   * If true, the cursor will be hidden after typing is complete
+   * @default false
+   */
+  hideCursorOnComplete?: boolean;
 }
 
 function Blinker() {
@@ -105,7 +116,14 @@ function NormalEffect({
   index: number;
   alwaysVisibleCount: number;
 }) {
-  return <>{text.slice(0, Math.max(index, Math.min(text.length, alwaysVisibleCount ?? 1)))}</>;
+  return (
+    <>
+      {text.slice(
+        0,
+        Math.max(index, Math.min(text.length, alwaysVisibleCount ?? 1))
+      )}
+    </>
+  );
 }
 
 enum TypingDirection {
@@ -147,10 +165,14 @@ function Type({
   alwaysVisibleCount,
   smooth,
   waitTime = 1000,
+  onComplete,
+  hideCursorOnComplete,
 }: TypingTextProps) {
   const [index, setIndex] = useState(0);
-
-  const [direction, setDirection] = useState<TypingDirection>(TypingDirection.Forward);
+  const [direction, setDirection] = useState<TypingDirection>(
+    TypingDirection.Forward
+  );
+  const [isComplete, setIsComplete] = useState(false);
 
   const words = useMemo(() => text.split(/\s+/), [text]);
   const total = smooth ? words.length : text.length;
@@ -161,9 +183,15 @@ function Type({
 
     const startTyping = () => {
       setIndex((prevDir) => {
-        if (direction === TypingDirection.Backward && prevDir === TypingDirection.Forward) {
+        if (
+          direction === TypingDirection.Backward &&
+          prevDir === TypingDirection.Forward
+        ) {
           clearInterval(interval);
-        } else if (direction === TypingDirection.Forward && prevDir === total - 1) {
+        } else if (
+          direction === TypingDirection.Forward &&
+          prevDir === total - 1
+        ) {
           clearInterval(interval);
         }
         return prevDir + direction;
@@ -191,6 +219,13 @@ function Type({
     return () => clearTimeout(timeout);
   }, [index, total, repeat, waitTime]);
 
+  useEffect(() => {
+    if (index === total && !repeat) {
+      setIsComplete(true);
+      onComplete?.();
+    }
+  }, [index, total, repeat, onComplete]);
+
   const waitingNextCycle = index === total || index === 0;
 
   return (
@@ -202,11 +237,22 @@ function Type({
         })}
       >
         {smooth ? (
-          <SmoothEffect words={words} index={index} alwaysVisibleCount={alwaysVisibleCount ?? 1} />
+          <SmoothEffect
+            words={words}
+            index={index}
+            alwaysVisibleCount={alwaysVisibleCount ?? 1}
+          />
         ) : (
-          <NormalEffect text={text} index={index} alwaysVisibleCount={alwaysVisibleCount ?? 1} />
+          <NormalEffect
+            text={text}
+            index={index}
+            alwaysVisibleCount={alwaysVisibleCount ?? 1}
+          />
         )}
-        <CursorWrapper waiting={waitingNextCycle} visible={Boolean(!smooth && cursor)}>
+        <CursorWrapper
+          waiting={waitingNextCycle}
+          visible={Boolean(!smooth && cursor && (!hideCursorOnComplete || !isComplete))}
+        >
           {cursor}
         </CursorWrapper>
       </div>
@@ -224,6 +270,8 @@ export default function TypingText({
   alwaysVisibleCount = 1,
   smooth = false,
   waitTime,
+  onComplete,
+  hideCursorOnComplete = false,
 }: TypingTextProps) {
   return (
     <Type
@@ -237,6 +285,8 @@ export default function TypingText({
       className={className}
       smooth={smooth}
       alwaysVisibleCount={alwaysVisibleCount}
+      onComplete={onComplete}
+      hideCursorOnComplete={hideCursorOnComplete}
     />
   );
 }
