@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "eth",
+  name: "Seth Addo",
   url: "https://eth.vercel.app",
   ogImage: "https://eth.vercel.app/og.png",
   description:
