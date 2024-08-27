@@ -73,7 +73,7 @@ function BottomNav() {
         }
       }}
       className={cn(
-        "fixed left-1/2 z-50 mx-auto rounded-2xl border border-muted-foreground bg-zinc-700 text-background shadow-sm shadow-muted-foreground dark:bg-white",
+        "fixed left-1/2 z-50 mx-auto rounded-2xl  bg-zinc-700 text-background shadow-sm shadow-muted-foreground dark:bg-white",
         {
           "transition-all duration-300": animationEnded,
           "overflow-hidden": !animationEnded,
