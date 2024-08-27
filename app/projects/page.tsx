@@ -3,13 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-
-const projects = [
-  { id: 1, title: "Project 1", description: "Description for Project 1" },
-  { id: 2, title: "Project 2", description: "Description for Project 2" },
-  { id: 3, title: "Project 3", description: "Description for Project 3" },
-  // Add more projects as needed
-];
+import { projects } from "@/lib/data";
 
 export default function ProjectsPage() {
   return (
@@ -17,7 +11,7 @@ export default function ProjectsPage() {
       <Link href="/" className="flex items-center text-blue-600 dark:text-blue-400 mb-8">
         <ArrowLeft className="mr-2" /> Back to Home
       </Link>
-      <h1 className="text-4xl font-bold mb-8 text-center">My Projects</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">Projects I&apos;ve worked on</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <motion.div
