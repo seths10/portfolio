@@ -1,8 +1,11 @@
 "use client";
 
-import React from "react";
-import TypingText from "@/components/ui/typing-text";
+import * as React from "react";
+import { LinkPreview } from "@/components/ui/link-preview";
 import { motion } from "framer-motion";
+import TypingText from "@/components/ui/typing-text";
+import Image from "next/image";
+import Link from "next/link";
 
 function VSCodeWindow() {
   const [typingDone, setTypingDone] = React.useState(false);
@@ -83,10 +86,53 @@ function VSCodeWindow() {
               >
                 <div className="bg-white dark:bg-zinc-700/50 dark:backdrop-blur-sm p-4 rounded-lg shadow-md">
                   <h2 className="text-lg font-semibold mb-2">About Me</h2>
-                  <p className="text-sm">
-                    I&apos;m a passionate developer with a keen interest in
-                    creating innovative solutions.
+                  <div className="flex items-center mb-2">
+                    <Image
+                      src="/images/me.jpg"
+                      alt="Seth Addo"
+                      width={60}
+                      height={60}
+                      className="rounded-full mr-4"
+                    />
+                    <div>
+                      <h3 className="font-semibold">Seth Addo</h3>
+                      <p className="text-sm">Full Stack Engineer</p>
+                    </div>
+                  </div>
+                  <p className="text-sm mb-2">
+                    I&apos;m a passionate software engineer with a keen interest
+                    in creating innovative solutions. Looking to hire me?
                   </p>
+                  <div className="flex flex-col text-xs gap-1.5">
+                    <div>
+                      {" "}
+                      <span className="text-zinc-900 dark:text-white">
+                        Email:{" "}
+                      </span>
+                      <LinkPreview
+                        url="mailto:addoseth82@gmail.com?subject=Hi%Seth"
+                        imageSrc="/images/gmail-preview.png"
+                        isStatic
+                        className="font-bold"
+                      >
+                        addoseth82@gmail.com
+                      </LinkPreview>
+                    </div>
+                    <div>
+                      {" "}
+                      <span className="text-zinc-900 dark:text-white">
+                        LinkedIn:{" "}
+                      </span>
+                      <LinkPreview
+                        url="https://linkedin.com/in/seth-addo-034327190"
+                        imageSrc="/images/linkedin-preview.png"
+                        isStatic
+                        className="font-bold"
+                      >
+                        https://linkedin.com/in/seth-addo-034327190
+                      </LinkPreview>
+                    </div>
+                  </div>
                 </div>
                 <div className="bg-white dark:bg-zinc-700/50 dark:backdrop-blur-sm p-4 rounded-lg shadow-md">
                   <h2 className="text-lg font-semibold mb-2">Skills</h2>
@@ -100,7 +146,9 @@ function VSCodeWindow() {
                     <li>Node.Js</li>
                     <li>Go</li>
                     <li>Figma</li>
-                    <li>and anything else I need learn to finish a project ...</li>
+                    <li>
+                      and anything else I need learn to finish a project ...
+                    </li>
                   </ul>
                 </div>
               </motion.div>
