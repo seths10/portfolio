@@ -101,7 +101,7 @@ function VSCodeWindow() {
                   </div>
                   <p className="text-sm mb-2">
                     I&apos;m a passionate software engineer with a keen interest
-                    in creating innovative solutions. Looking to hire me?
+                    in creating innovative solutions and community building. Looking to hire me?
                   </p>
                   <div className="flex flex-col text-xs gap-1.5">
                     <div>
