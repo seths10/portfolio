@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { CodeIcon, FolderIcon, NewspaperIcon } from "lucide-react";
+import { Building2, FolderIcon, NotebookPen } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { ModeToggle } from "@/components/ui/mode-toogle";
 import { Icons } from "@/components/icons/icons";
@@ -46,7 +46,6 @@ function BottomNav() {
         transform: "translateX(-50%)",
       }
     : {
-        // Once the animation ends, use CSS to properly position the dock
         top: "calc(100dvh - 96px)",
         width: "fit-content",
         height: "fit-content",
@@ -95,7 +94,7 @@ function BottomNav() {
             </Link>
             <Link href={siteConfig.links.blog} rel="noreferrer">
               <HeaderDockItem>
-                <NewspaperIcon className="h-4 w-4" />
+                <NotebookPen className="h-4 w-4" />
                 <span className="sr-only">Components</span>
               </HeaderDockItem>
             </Link>
@@ -107,6 +106,12 @@ function BottomNav() {
               <HeaderDockItem>
                 <Icons.gitHub className="h-4 w-4" />
                 <span className="sr-only">GitHub</span>
+              </HeaderDockItem>
+            </Link>
+            <Link href="/companies" rel="noreferrer">
+              <HeaderDockItem>
+                <Building2 className="h-4 w-4" />
+                <span className="sr-only">Companies</span>
               </HeaderDockItem>
             </Link>
             <Link
