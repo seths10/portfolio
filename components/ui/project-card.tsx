@@ -5,15 +5,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Icons } from "../icons/icons";
 import Link from "next/link";
-
-type Project = {
-  id: number;
-  title: string;
-  description: string;
-  imageUrl: string;
-  githubUrl: string;
-  liveUrl: string;
-};
+import { Project } from "@/types/index";
 
 export function ProjectCard({
   project,
