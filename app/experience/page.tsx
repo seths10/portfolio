@@ -3,6 +3,7 @@
 import { experiences } from "@/lib/data";
 import { ExperienceCard } from "@/components/ui/experience-card";
 import { ArrowLeft } from "lucide-react";
+import BottomNav from "@/components/ui/bottom-nav";
 import Link from "next/link";
 
 export default function ExperiencePage() {
@@ -26,6 +27,8 @@ export default function ExperiencePage() {
           />
         ))}
       </div>
+
+      <BottomNav />
     </div>
   );
 }

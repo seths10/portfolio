@@ -3,6 +3,7 @@
 import { ArrowLeft } from "lucide-react";
 import { ProjectCard } from "@/components/ui/project-card";
 import { projects } from "@/lib/data";
+import BottomNav from "@/components/ui/bottom-nav";
 import Link from "next/link";
 
 export default function ProjectsPage() {
@@ -17,6 +18,8 @@ export default function ProjectsPage() {
           <ProjectCard key={project.id} project={project} index={index} />
         ))}
       </div>
+
+      <BottomNav />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import BottomNav from "@/components/ui/bottom-nav";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -52,6 +53,8 @@ export default function MemoPage() {
           </motion.div>
         ))}
       </div>
+
+      <BottomNav />
     </div>
   );
 }
