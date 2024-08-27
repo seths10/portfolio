@@ -1,6 +1,6 @@
 "use client";
 
-import BottomNav from "./_bottom-nav/bottom-nav";
+import BottomNav from "../components/ui/bottom-nav";
 import TypingText from "@/components/ui/typing-text";
 import VSCodeWindow from "@/components/ui/vscode-window";
 
