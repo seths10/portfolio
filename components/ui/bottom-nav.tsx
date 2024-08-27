@@ -1,5 +1,11 @@
 import { cn } from "@/lib/utils";
-import { Building2, FolderIcon, NotebookPen } from "lucide-react";
+import {
+  BriefcaseBusinessIcon,
+  Building2,
+  FolderIcon,
+  NotebookPen,
+  Image as ImageIcon,
+} from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { ModeToggle } from "@/components/ui/mode-toogle";
 import { Icons } from "@/components/icons/icons";
@@ -91,15 +97,15 @@ function BottomNav() {
 
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link href="/companies" rel="noreferrer">
+                  <Link href="/experience" rel="noreferrer">
                     <HeaderDockItem>
-                      <Building2 className="h-4 w-4" />
-                      <span className="sr-only">Companies</span>
+                      <BriefcaseBusinessIcon className="h-4 w-4" />
+                      <span className="sr-only">Experience</span>
                     </HeaderDockItem>
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Companies</p>
+                  <p>Experience</p>
                 </TooltipContent>
               </Tooltip>
 
@@ -118,6 +124,22 @@ function BottomNav() {
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Twitter</p>
+                </TooltipContent>
+              </Tooltip>
+
+              <div className="w-px h-8 bg-zinc-600 dark:bg-zinc-300 mx-2" />
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link href="/memo" rel="noreferrer">
+                    <HeaderDockItem>
+                      <ImageIcon className="h-4 w-4" />
+                      <span className="sr-only">Memo</span>
+                    </HeaderDockItem>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Memo</p>
                 </TooltipContent>
               </Tooltip>
 
