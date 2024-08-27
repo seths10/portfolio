@@ -1,7 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { ExternalLinkIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { Icons } from "../icons/icons";
+import Link from "next/link";
 
 type Project = {
   id: number;
@@ -29,13 +32,30 @@ export function ProjectCard({
     >
       <div
         className={cn(
-          "cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4",
-
+          "cursor-pointer overflow-hidden relative card h-80 rounded-md shadow-xl max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4",
+          "group/inner"
         )}
+        style={{
+          backgroundImage: `
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+            url(${project.imageUrl})
+          `,
+          backgroundSize: "cover",
+        }}
       >
-        <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
+        <div className="flex items-center justify-center gap-3 absolute w-full h-full top-0 left-0 transition duration-300 opacity-0 group-hover/inner:opacity-90 bg-black">
+          <Link href={project.githubUrl} target="_blank" className="opacity-0 group-hover/inner:opacity-100 transition-opacity duration-300">
+            <Icons.gitHub className="h-5 w-5 text-white" />
+          </Link>
+          <Link href={project.liveUrl} target="_blank" className="opacity-0 group-hover/inner:opacity-100 transition-opacity duration-300">
+            <ExternalLinkIcon className="h-5 w-5 text-white" />
+          </Link>
+        </div>
+
+        <div className="flex flex-end gap-2"></div>
+
         <div className="text content">
-          <h1 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10">
+          <h1 className="font-bold text-lg md:text-2xl text-gray-50 relative z-10">
             {project.title}
           </h1>
           <p className="font-normal text-sm text-gray-50 relative z-10 my-4">
