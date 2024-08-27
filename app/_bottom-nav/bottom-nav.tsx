@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { CodeIcon, FolderIcon } from "lucide-react";
+import { CodeIcon, FolderIcon, NewspaperIcon } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { ModeToggle } from "@/components/ui/mode-toogle";
 import { Icons } from "@/components/icons/icons";
@@ -95,7 +95,7 @@ function BottomNav() {
             </Link>
             <Link href={siteConfig.links.blog} rel="noreferrer">
               <HeaderDockItem>
-                <CodeIcon className="h-4 w-4" />
+                <NewspaperIcon className="h-4 w-4" />
                 <span className="sr-only">Components</span>
               </HeaderDockItem>
             </Link>
