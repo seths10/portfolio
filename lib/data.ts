@@ -82,7 +82,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 6,
-    companyOrOrganization: "Google Student Club",
+    companyOrOrganization: "Google Developer Student Clubs",
     position: "Student",
     role: "Lead",
     companyLogo: "/images/companies/gdsc.jfif",

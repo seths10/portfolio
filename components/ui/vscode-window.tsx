@@ -38,7 +38,7 @@ function VSCodeWindow() {
         </div>
         <div className="flex items-center space-x-2">
           <span className="text-xs text-gray-500 dark:text-gray-400">
-            JavaScript
+            TypeScript
           </span>
           <span className="text-xs text-gray-500 dark:text-gray-400">
             UTF-8
@@ -89,6 +89,7 @@ function VSCodeWindow() {
                     <Image
                       src="/images/me.jpg"
                       alt="Seth Addo"
+                      priority
                       width={60}
                       height={60}
                       className="rounded-full mr-4"
