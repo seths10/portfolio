@@ -104,7 +104,7 @@ function VSCodeWindow() {
                     in creating innovative solutions and community building. Looking to hire me?
                   </p>
                   <div className="flex flex-col text-xs gap-1.5">
-                    <div>
+                    {/* <div>
                       {" "}
                       <span className="text-zinc-900 dark:text-white">
                         Email:{" "}
@@ -117,7 +117,7 @@ function VSCodeWindow() {
                       >
                         addoseth82@gmail.com
                       </LinkPreview>
-                    </div>
+                    </div> */}
                     <div>
                       {" "}
                       <span className="text-zinc-900 dark:text-white">
